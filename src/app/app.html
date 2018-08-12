@@ -1,9 +1,13 @@
 <main>
-  <h1 class="title">Hello from Angular !</h1>
-
+  <h1 class="title">Hello from Angular2 !</h1>
+  <div class="animate-show-hide" ng-show="app.show">
+    <md-button ng-click="app.showAlert()" class="md-raised md-warn">Primary</md-button>
+    <md-button ng-click="app.showAdvanced()" class="md-raised md-success">Primary</md-button>
+  </div>
   <!-- Images (and assets) are parsed and loaded from within the public directory -->
-  <img src="/img/logo.png">
 </main>
+<img src="/img/logo.png">
 <footer>
   <a ng-href="{{app.url}}">Webpack Angular Starter</a>
+
 </footer>
