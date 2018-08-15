@@ -10,8 +10,19 @@ let app = () => {
 
 class AppCtrl {
   constructor($scope, $mdDialog, $timeout) {
+    $scope.selected = [];
+
+
+    this.promise = new Promise((res, rej) => {
+      setTimeout(() => {
+        res({ data: [{ name: 'mirek' }, { name: 'mirek2' }] })
+      }, 2000);
+    }).then((desserts) => {
+      this.desserts = desserts;
+    });
     this.url = 'https://github.com/preboot/angular-webpack';
     this.$mdDialog = $mdDialog;
+    this.states = [1, 2, 3]
     $timeout(() => {
       this.show = true;
     }, 1000);
@@ -42,8 +53,29 @@ class AppCtrl {
 
 const MODULE_NAME = 'app';
 
-angular.module(MODULE_NAME, ['ngMaterial', 'ngMessages'])
-  .directive('app', app)
+var cardComponentOptions = {
+  bindings: {
+    title: '@'
+  },
+  transclude: {
+    'title': '?cardTitle',
+    'song': '?cardSong',
+  },
+  template:
+    `<div>
+      <h3>{{$ctrl.title || "No title"}}</h3>
+      <ul>
+         <i><div ng-transclude="song">Empty</div></i>
+        <i><div ng-transclude="title">Empty</div></i>
+      </ul>
+    </div>`
+};
+
+angular.module(MODULE_NAME, ['ngMaterial', 'ngMessages', 'md.data.table'])
+  .directive('app', app).component('multislotCard', cardComponentOptions)
   .controller('AppCtrl', AppCtrl);
+
+
+
 
 export default MODULE_NAME;
