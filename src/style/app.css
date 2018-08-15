@@ -32,3 +32,10 @@ footer {
 .animate-show-hide.ng-hide-remove {
   transition: all linear 0.5s;
 }
+.searcher{
+  width: 100%;
+  border: none;
+}
+.searcher:focus{
+ outline: none;
+}
