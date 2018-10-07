@@ -1,5 +1,5 @@
 <main>
-  <h1 class="title">Hello from Angular2 !</h1>
+  <h1 class="title">Hello from Angular !</h1>
   <md-card>
     <md-toolbar class="md-table-toolbar md-default" ng-hide="selected.length || filter.show">
       <div class="md-toolbar-tools">
@@ -54,6 +54,7 @@
 
   </md-card>
   <div class="animate-show-hide" ng-show="app.show">
+    <greet-user />
     <md-button ng-click="app.showAlert()" class="md-raised md-warn">Primary</md-button>
     <md-button ng-click="app.showAdvanced()" class="md-raised md-success">Primary</md-button>
     <multislot-card title="best songs">

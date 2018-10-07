@@ -75,7 +75,16 @@ angular.module(MODULE_NAME, ['ngMaterial', 'ngMessages', 'md.data.table'])
   .directive('app', app).component('multislotCard', cardComponentOptions)
   .controller('AppCtrl', AppCtrl);
 
-
+angular.module(MODULE_NAME).
+  component('greetUser', {
+    template: '<div>Hello, {{$ctrl.user}} greetUser component</div>',
+    controller: function GreetUserController($element) {
+      $($element).click(function () {
+        alert($element);
+      })
+      this.user = 'world';
+    }
+  });
 
 
 export default MODULE_NAME;
